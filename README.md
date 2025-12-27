@@ -1,5 +1,4 @@
-give me discription on it in which i can upload it on git hub
-E-Learning Platform - Complete Project Description
+
 📚 Project Overview
 E-Learning Platform is a modern, interactive web application designed for delivering online courses with a comprehensive set of features for both learners and educators. Built with HTML, CSS, JavaScript, and Firebase, this platform provides a seamless learning experience with authentication, video courses, quizzes, progress tracking, and offline capabilities.
 
