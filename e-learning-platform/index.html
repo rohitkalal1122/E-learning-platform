@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Learning Platform | Master New Skills</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4f46e5;
+      --primary-dark: #3730a3;
+      --secondary-color: #10b981;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e5e7eb;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: 1.2rem 2rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .logo i {
+      font-size: 2rem;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .user-info span {
+      font-weight: 500;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--bg-white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      border: none;
+      background-color: transparent;
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--bg-white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Auth Section */
+    .auth-container {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .auth-form {
+      flex: 1;
+    }
+
+    .auth-form h3 {
+      color: var(--primary-dark);
+    }
+
+    .input-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background-color: #e5e7eb;
+      color: var(--text-dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: #d1d5db;
+    }
+
+    .btn-success {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #0da271;
+    }
+
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+
+    .message {
+      margin-top: 1rem;
+      padding: 12px;
+      border-radius: var(--radius);
+      font-weight: 500;
+    }
+
+    .success {
+      background-color: #d1fae5;
+      color: #065f46;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .error {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border-left: 4px solid #ef4444;
+    }
+
+    /* Course Section */
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .video-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      background-color: #000;
+    }
+
+    video {
+      width: 100%;
+      max-height: 500px;
+      display: block;
+    }
+
+    .module-list {
+      list-style: none;
+    }
+
+    .module-item {
+      padding: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .module-item:hover {
+      background-color: #f0f9ff;
+      border-color: var(--primary-color);
+    }
+
+    .module-item.active {
+      background-color: #e0f2fe;
+      border-color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    .module-icon {
+      color: var(--primary-color);
+    }
+
+    .progress-container {
+      margin-top: 1.5rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: #e5e7eb;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: var(--secondary-color);
+      border-radius: 5px;
+      transition: width 0.5s ease;
+    }
+
+    /* Quiz Section */
+    .quiz-container {
+      max-width: 800px;
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-progress {
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+
+    .quiz-question {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-option {
+      padding: 16px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      background-color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+      font-size: 1rem;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--primary-color);
+      background-color: #f8fafc;
+    }
+
+    .quiz-option.correct {
+      border-color: var(--secondary-color);
+      background-color: #d1fae5;
+    }
+
+    .quiz-option.incorrect {
+      border-color: #ef4444;
+      background-color: #fee2e2;
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 120px;
+      height: fit-content;
+    }
+
+    .sidebar-card {
+      margin-bottom: 1.5rem;
+    }
+
+    .bookmarks-list {
+      list-style: none;
+    }
+
+    .bookmark-item {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bookmark-item:last-child {
+      border-bottom: none;
+    }
+
+    .offline-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background-color: #f0f9ff;
+    }
+
+    .offline-status.active {
+      background-color: #d1fae5;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container, .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .nav-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .auth-container {
+        flex-direction: column;
+      }
+      
+      .course-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>LearnHub</span>
+      </div>
+      <div class="user-info">
+        <i class="fas fa-user-circle"></i>
+        <span id="user-email">Not logged in</span>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <button class="nav-btn active" onclick="show('dashboard')">
+        <i class="fas fa-home"></i> Dashboard
+      </button>
+      <button class="nav-btn" onclick="show('auth')">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <button class="nav-btn" onclick="show('course')">
+        <i class="fas fa-play-circle"></i> Course
+      </button>
+      <button class="nav-btn" onclick="show('quiz')">
+        <i class="fas fa-question-circle"></i> Quiz
+      </button>
+      <button class="nav-btn" onclick="show('progress')">
+        <i class="fas fa-chart-line"></i> Progress
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main>
+      <!-- Dashboard -->
+      <div id="dashboard" class="card">
+        <h3><i class="fas fa-home"></i> Welcome to LearnHub</h3>
+        <p>Start your learning journey with our interactive courses. Track your progress, take quizzes, and bookmark important lessons for offline access.</p>
+        
+        <div class="auth-container" style="margin-top: 1.5rem;">
+          <div class="auth-form">
+            <h4>Quick Login</h4>
+            <div class="input-group">
+              <input id="email" type="email" placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+              <input id="password" type="password" placeholder="Enter your password">
+            </div>
+            <button class="btn btn-primary" onclick="login()">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            <button class="btn btn-secondary" onclick="register()">
+              <i class="fas fa-user-plus"></i> Register
+            </button>
+            <div id="msg" class="message"></div>
+          </div>
+          
+          <div class="auth-form">
+            <h4>Featured Course</h4>
+            <div class="module-item active">
+              <div>
+                <i class="fas fa-play-circle module-icon"></i>
+                <strong>HTML & CSS Fundamentals</strong>
+              </div>
+              <span>25 min</span>
+            </div>
+            <div class="module-item">
+              <div>
+                <i class="fas fa-play-circle module-icon"></i>
+                <strong>JavaScript Essentials</strong>
+              </div>
+              <span>40 min</span>
+            </div>
+            <div class="module-item">
+              <div>
+                <i class="fas fa-play-circle module-icon"></i>
+                <strong>Responsive Web Design</strong>
+              </div>
+              <span>35 min</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="show('course')">
+              <i class="fas fa-play"></i> Start Learning
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authentication Section -->
+      <div id="auth" class="card hidden">
+        <h3><i class="fas fa-user-circle"></i> Create Account or Login</h3>
+        <div class="auth-container">
+          <div class="auth-form">
+            <h4>Register</h4>
+            <div class="input-group">
+              <label for="reg-email">Email</label>
+              <input id="reg-email" type="email" placeholder="you@example.com">
+            </div>
+            <div class="input-group">
+              <label for="reg-password">Password</label>
+              <input id="reg-password" type="password" placeholder="At least 6 characters">
+            </div>
+            <button class="btn btn-primary" onclick="register()">
+              <i class="fas fa-user-plus"></i> Create Account
+            </button>
+          </div>
+          
+          <div class="auth-form">
+            <h4>Login</h4>
+            <div class="input-group">
+              <label for="login-email">Email</label>
+              <input id="login-email" type="email" placeholder="you@example.com">
+            </div>
+            <div class="input-group">
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" placeholder="Your password">
+            </div>
+            <button class="btn btn-success" onclick="login()">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+          </div>
+        </div>
+        <div id="auth-msg" class="message"></div>
+      </div>
+
+      <!-- Course Section -->
+      <div id="course" class="card hidden">
+        <div class="course-header">
+          <h3><i class="fas fa-play-circle"></i> Web Development Course</h3>
+          <div class="course-actions">
+            <button class="btn btn-secondary btn-small" onclick="bookmarkCurrent()">
+              <i class="far fa-bookmark"></i> Bookmark
+            </button>
+            <button class="btn btn-primary btn-small" onclick="toggleOffline()">
+              <i class="fas fa-download"></i> Offline
+            </button>
+          </div>
+        </div>
+        
+        <div class="video-container">
+          <video id="course-video" controls poster="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        
+        <h4>Course Modules</h4>
+        <ul class="module-list">
+          <li class="module-item active" onclick="changeModule(1)">
+            <div>
+              <i class="fas fa-play-circle module-icon"></i>
+              <strong>Module 1: HTML Fundamentals</strong>
+            </div>
+            <span>25 min</span>
+          </li>
+          <li class="module-item" onclick="changeModule(2)">
+            <div>
+              <i class="fas fa-play-circle module-icon"></i>
+              <strong>Module 2: CSS Styling</strong>
+            </div>
+            <span>30 min</span>
+          </li>
+          <li class="module-item" onclick="changeModule(3)">
+            <div>
+              <i class="fas fa-play-circle module-icon"></i>
+              <strong>Module 3: JavaScript Basics</strong>
+            </div>
+            <span>40 min</span>
+          </li>
+          <li class="module-item" onclick="changeModule(4)">
+            <div>
+              <i class="fas fa-play-circle module-icon"></i>
+              <strong>Module 4: Responsive Design</strong>
+            </div>
+            <span>35 min</span>
+          </li>
+        </ul>
+        
+        <div class="progress-container">
+          <div class="progress-header">
+            <span>Course Progress</span>
+            <span id="progress-percent">25%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 25%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Section -->
+      <div id="quiz" class="card hidden">
+        <div class="quiz-header">
+          <h3><i class="fas fa-question-circle"></i> Knowledge Check</h3>
+          <div class="quiz-progress">Question 1 of 4</div>
+        </div>
+        
+        <div class="quiz-question" id="quiz-question">
+          HTML stands for?
+        </div>
+        
+        <div class="quiz-options" id="quiz-options">
+          <button class="quiz-option" onclick="checkAnswer(this, true)">Hyper Text Markup Language</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">High Text Machine Language</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">Hyper Tabular Markup Language</button>
+          <button class="quiz-option" onclick="checkAnswer(this, false)">Hyperlinks and Text Markup Language</button>
+        </div>
+        
+        <div class="quiz-nav">
+          <button class="btn btn-secondary" id="prev-btn" disabled>
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Tracking -->
+      <div id="progress" class="card hidden">
+        <h3><i class="fas fa-chart-line"></i> Your Learning Progress</h3>
+        <p>Track your progress across all courses and modules.</p>
+        
+        <div class="progress-container" style="margin-top: 2rem;">
+          <div class="progress-header">
+            <span>Web Development Course</span>
+            <span>25%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 25%"></div>
+          </div>
+        </div>
+        
+        <div class="progress-container">
+          <div class="progress-header">
+            <span>HTML & CSS Fundamentals</span>
+            <span>100%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 100%"></div>
+          </div>
+        </div>
+        
+        <div class="progress-container">
+          <div class="progress-header">
+            <span>JavaScript Essentials</span>
+            <span>40%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 40%"></div>
+          </div>
+        </div>
+        
+        <h4 style="margin-top: 2rem;">Recent Quiz Scores</h4>
+        <ul class="module-list" style="margin-top: 1rem;">
+          <li class="module-item">
+            <div>
+              <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+              <strong>HTML Basics Quiz</strong>
+            </div>
+            <span>90%</span>
+          </li>
+          <li class="module-item">
+            <div>
+              <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+              <strong>CSS Styling Quiz</strong>
+            </div>
+            <span>85%</span>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="card sidebar-card">
+        <h3><i class="fas fa-bookmark"></i> Bookmarks</h3>
+        <ul class="bookmarks-list" id="bookmarks-list">
+          <li class="bookmark-item">
+            <span>HTML Fundamentals</span>
+            <i class="fas fa-times" onclick="removeBookmark(this)"></i>
+          </li>
+          <li class="bookmark-item">
+            <span>CSS Box Model</span>
+            <i class="fas fa-times" onclick="removeBookmark(this)"></i>
+          </li>
+        </ul>
+        <p id="no-bookmarks" style="text-align: center; color: var(--text-light); font-size: 0.9rem; padding: 10px;">
+          No bookmarks yet. Click the bookmark button on any lesson.
+        </p>
+      </div>
+      
+      <div class="card sidebar-card">
+        <h3><i class="fas fa-download"></i> Offline Access</h3>
+        <div class="offline-status" id="offline-status">
+          <i class="fas fa-wifi"></i>
+          <span>Offline mode: <strong>Disabled</strong></span>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+          Enable offline mode to access bookmarked content without an internet connection.
+        </p>
+      </div>
+      
+      <div class="card sidebar-card">
+        <h3><i class="fas fa-trophy"></i> Achievements</h3>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 1rem;">
+          <div style="background-color: #fef3c7; padding: 10px; border-radius: 50%;">
+            <i class="fas fa-play-circle" style="color: #d97706;"></i>
+          </div>
+          <div>
+            <strong>First Lesson</strong>
+            <p style="font-size: 0.8rem; color: var(--text-light);">Completed your first module</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 1rem;">
+          <div style="background-color: #d1fae5; padding: 10px; border-radius: 50%;">
+            <i class="fas fa-star" style="color: var(--secondary-color);"></i>
+          </div>
+          <div>
+            <strong>Quiz Master</strong>
+            <p style="font-size: 0.8rem; color: var(--text-light);">Scored 90%+ on a quiz</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2023 LearnHub E-Learning Platform. All rights reserved.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+        Built with Firebase, HTML5, and CSS3 | 
+        <i class="fas fa-heart" style="color: #ef4444;"></i> 
+        For educational purposes
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3pDwvLTQTEXJRDbWnMz839FChnNq-0F4",
+      authDomain: "e-learning-platform-93645.firebaseapp.com",
+      projectId: "e-learning-platform-93645",
+      storageBucket: "e-learning-platform-93645.firebasestorage.app",
+      messagingSenderId: "733709149038",
+      appId: "1:733709149038:web:43744d145a957e730ed77f"
+    };
+    
+    // Navigation and UI Functions
+    function show(id) {
+      document.querySelectorAll('.card').forEach(d => d.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+    
+    function updateUserInfo(email) {
+      const userEmailElement = document.getElementById('user-email');
+      userEmailElement.textContent = email || 'Not logged in';
+    }
+    
+    // Course Functions
+    function changeModule(moduleNumber) {
+      const modules = document.querySelectorAll('.module-item');
+      modules.forEach(module => module.classList.remove('active'));
+      modules[moduleNumber - 1].classList.add('active');
+      
+      const video = document.getElementById('course-video');
+      const progressFill = document.getElementById('progress-fill');
+      const progressPercent = document.getElementById('progress-percent');
+      
+      if (moduleNumber === 1) {
+        video.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        progressFill.style.width = '25%';
+        progressPercent.textContent = '25%';
+      } else if (moduleNumber === 2) {
+        video.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+        progressFill.style.width = '50%';
+        progressPercent.textContent = '50%';
+      } else if (moduleNumber === 3) {
+        video.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+        progressFill.style.width = '75%';
+        progressPercent.textContent = '75%';
+      } else {
+        video.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4';
+        progressFill.style.width = '100%';
+        progressPercent.textContent = '100%';
+      }
+      
+      video.load();
+    }
+    
+    function bookmarkCurrent() {
+      const activeModule = document.querySelector('.module-item.active');
+      if (!activeModule) return;
+      
+      const moduleName = activeModule.querySelector('strong').textContent;
+      const bookmarksList = document.getElementById('bookmarks-list');
+      const noBookmarks = document.getElementById('no-bookmarks');
+      
+      const bookmarkItem = document.createElement('li');
+      bookmarkItem.className = 'bookmark-item';
+      bookmarkItem.innerHTML = `
+        <span>${moduleName}</span>
+        <i class="fas fa-times" onclick="removeBookmark(this)"></i>
+      `;
+      
+      bookmarksList.appendChild(bookmarkItem);
+      noBookmarks.style.display = 'none';
+      
+      showMessage('Lesson bookmarked successfully!', 'success');
+    }
+    
+    function removeBookmark(element) {
+      const bookmarkItem = element.closest('.bookmark-item');
+      bookmarkItem.remove();
+      
+      const bookmarksList = document.getElementById('bookmarks-list');
+      if (bookmarksList.children.length === 0) {
+        document.getElementById('no-bookmarks').style.display = 'block';
+      }
+    }
+    
+    // Quiz Functions
+    let currentQuestion = 1;
+    const totalQuestions = 4;
+    
+    function checkAnswer(button, isCorrect) {
+      const options = document.querySelectorAll('.quiz-option');
+      options.forEach(opt => {
+        opt.classList.remove('correct', 'incorrect');
+        opt.disabled = true;
+      });
+      
+      if (isCorrect) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('incorrect');
+        options[0].classList.add('correct');
+      }
+    }
+    
+    function nextQuestion() {
+      if (currentQuestion < totalQuestions) {
+        currentQuestion++;
+        updateQuizDisplay();
+      } else {
+        showMessage('Quiz completed! Check your progress dashboard.', 'success');
+      }
+    }
+    
+    function updateQuizDisplay() {
+      const questionElement = document.getElementById('quiz-question');
+      const optionsElement = document.getElementById('quiz-options');
+      const progressElement = document.querySelector('.quiz-progress');
+      const prevBtn = document.getElementById('prev-btn');
+      
+      progressElement.textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+      prevBtn.disabled = currentQuestion === 1;
+      
+      const questions = [
+        "CSS stands for?",
+        "Which HTML tag is used for creating a hyperlink?",
+        "In JavaScript, which keyword is used to declare a variable?"
+      ];
+      
+      const answers = [
+        ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style System", "Colorful Style Sheets"],
+        ["<link>", "<a>", "<href>", "<hyperlink>"],
+        ["var", "variable", "v", "let"]
+      ];
+      
+      if (currentQuestion <= 4) {
+        if (currentQuestion === 1) {
+          questionElement.textContent = "HTML stands for?";
+          optionsElement.innerHTML = `
+            <button class="quiz-option" onclick="checkAnswer(this, true)">Hyper Text Markup Language</button>
+            <button class="quiz-option" onclick="checkAnswer(this, false)">High Text Machine Language</button>
+            <button class="quiz-option" onclick="checkAnswer(this, false)">Hyper Tabular Markup Language</button>
+            <button class="quiz-option" onclick="checkAnswer(this, false)">Hyperlinks and Text Markup Language</button>
+          `;
+        } else {
+          const qIndex = currentQuestion - 2;
+          questionElement.textContent = questions[qIndex];
+          
+          let optionsHTML = '';
+          for (let i = 0; i < 4; i++) {
+            const isCorrect = i === 0;
+            optionsHTML += `<button class="quiz-option" onclick="checkAnswer(this, ${isCorrect})">${answers[qIndex][i]}</button>`;
+          }
+          
+          optionsElement.innerHTML = optionsHTML;
+        }
+      }
+    }
+    
+    // Offline Mode
+    function toggleOffline() {
+      const offlineStatus = document.getElementById('offline-status');
+      const isOffline = offlineStatus.classList.contains('active');
+      
+      if (isOffline) {
+        offlineStatus.classList.remove('active');
+        offlineStatus.innerHTML = `<i class="fas fa-wifi"></i><span>Offline mode: <strong>Disabled</strong></span>`;
+        showMessage('Offline mode disabled', 'success');
+      } else {
+        offlineStatus.classList.add('active');
+        offlineStatus.innerHTML = `<i class="fas fa-wifi-slash"></i><span>Offline mode: <strong>Enabled</strong></span>`;
+        showMessage('Offline mode enabled. Bookmarked content is now available offline.', 'success');
+      }
+    }
+    
+    // Message Display
+    function showMessage(text, type) {
+      const msgElement = document.getElementById('msg');
+      const authMsgElement = document.getElementById('auth-msg');
+      
+      msgElement.textContent = text;
+      msgElement.className = `message ${type}`;
+      msgElement.style.display = 'block';
+      
+      authMsgElement.textContent = text;
+      authMsgElement.className = `message ${type}`;
+      authMsgElement.style.display = 'block';
+      
+      setTimeout(() => {
+        msgElement.style.display = 'none';
+        authMsgElement.style.display = 'none';
+      }, 5000);
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      updateQuizDisplay();
+      document.getElementById('no-bookmarks').style.display = 'none';
+    });
+  </script>
+  
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { 
+      getAuth, 
+      createUserWithEmailAndPassword, 
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    
+    // Monitor auth state
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        updateUserInfo(user.email);
+        show('dashboard');
+        document.querySelectorAll('.nav-btn')[0].classList.add('active');
+        document.querySelectorAll('.nav-btn')[1].classList.remove('active');
+      } else {
+        updateUserInfo(null);
+      }
+    });
+    
+    window.register = function() {
+      const email = document.getElementById('reg-email').value || document.getElementById('email').value;
+      const password = document.getElementById('reg-password').value || document.getElementById('password').value;
+      
+      createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        showMessage('Account created successfully!', 'success');
+      })
+      .catch(e => {
+        showMessage(e.message, 'error');
+      });
+    }
+    
+    window.login = function() {
+      const email = document.getElementById('login
